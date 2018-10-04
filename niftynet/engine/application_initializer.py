@@ -98,8 +98,12 @@ class VarianceScaling(object):
         scale = float(args.get('scale', 1.0))
         mode = args.get('mode', "fan_in")
         assert (mode in ["fan_in", "fan_out", "fan_avg"])
-        distribution = args.get('distribution', "normal")
-        assert (distribution in ["normal", "uniform"])
+        distribution = args.get('distribution', 'truncated_normal')
+        # calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with distribution=normal
+        # is deprecated and will be removed in a future version.
+        # Instructions for updating:
+        #      `normal` is a deprecated alias for `truncated_normal`
+        assert (distribution in ["truncated_normal","normal", "uniform"])
         return tf.variance_scaling_initializer(scale,
                                                mode,
                                                distribution,
@@ -184,5 +188,5 @@ class HeNormal(object):
         create an instance of the initializer
         """
         if not args:
-            args = {"scale": "2.", "mode": "fan_in", "distribution": "normal"}
+            args = {"scale": "2.", "mode": "fan_in", "distribution": "truncated_normal"}
         return VarianceScaling.get_instance(args)
