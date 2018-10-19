@@ -21,8 +21,8 @@ def check_spatial_dims(input_tensor, criteria):
         import inspect
         raise ValueError("input tensor's spatial dimensionality not"
                          " not compatible, please tune "
-                         "the input window sizes:\n{}".format(
-            inspect.getsource(criteria)))
+                         "the input window sizes:\n{0} not satisfied by {1}".format(
+            inspect.getsource(criteria), spatial_dims))
     return all_dims_satisfied
 
 
