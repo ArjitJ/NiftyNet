@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 wget -q https://www.dropbox.com/s/lioecnpv82r5n6e/example_volumes_v0_2.tar.gz
 tar -xzvf example_volumes_v0_2.tar.gz
 wget -N https://www.dropbox.com/s/p7b3t2c3mewtree/testing_data_v0_2.tar.gz
