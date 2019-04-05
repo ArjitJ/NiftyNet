@@ -485,6 +485,13 @@ def add_training_args(parser):
         default=())
 
     parser.add_argument(
+        "--isotropic_scaling",
+        help="Indicates if the same random scaling factor should be applied "
+             "to each dimension",
+        type=str2boolean,
+        default=False)
+
+    parser.add_argument(
         "--antialiasing",
         help="Indicates if antialiasing must be performed "
              "when randomly scaling the input images",
@@ -608,6 +615,18 @@ def add_training_args(parser):
         help="Fraction of dataset to use for inference",
         type=float,
         default=0.)
+
+    parser.add_argument(
+        "--vars_to_restore",
+        help="regex strings matching variable names to restore",
+        type=str,
+        default='')
+
+    parser.add_argument(
+        "--vars_to_freeze",
+        help="regex strings matching variable to be fixed during training",
+        type=str,
+        default='')
 
     return parser
 
