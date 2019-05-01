@@ -289,11 +289,21 @@ def __add_registration_args(parser):
     return parser
 
 
+def __add_landmark_args(parser):
+    parser.add_argument(
+        "--num_classes",
+        metavar='',
+        help="Set number of classes",
+        type=int,
+        default=-1)
+    return parser
+
 SUPPORTED_ARG_SECTIONS = {
     'REGRESSION': __add_regression_args,
     'SEGMENTATION': __add_segmentation_args,
     'CLASSIFICATION': __add_classification_args,
     'AUTOENCODER': __add_autoencoder_args,
     'GAN': __add_gan_args,
-    'REGISTRATION': __add_registration_args
+    'REGISTRATION': __add_registration_args,
+    'LANDMARK': __add_landmark_args
 }
